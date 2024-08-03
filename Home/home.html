@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="/Home/home.css">
+</head>
+
+<body>
+    <header>
+        <h1>Recipe Finder</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="/login/login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="recipes-section">
+        <h2>Available Recipes</h2>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <div class="recipe-card">
+            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <h3>Recipe Name</h3>
+            <button class="toggle-btn">Show Description</button>
+            <p class="recipe-description">Description of the recipe.</p>
+        </div>
+        <!-- More recipe cards can be added here -->
+    </section>
+
+    <div class="btn">
+        <a href="/index.html"><button class="btn1">Search More Recipe</button></a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Recipe Finder. All rights reserved.</p>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.toggle-btn');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const description = this.nextElementSibling;
+                    if (description.style.display === 'none' || description.style.display === '') {
+                        description.style.display = 'block';
+                        this.textContent = 'Hide Description';
+                    } else {
+                        description.style.display = 'none';
+                        this.textContent = 'Show Description';
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

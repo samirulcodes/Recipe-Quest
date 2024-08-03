@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="/login/login.css">
+</head>
+<body>
+    <div class="container" id="loginPage">
+        <div class="form-container" id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')">Show</button>
+            </div>
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <span onclick="showRegister()">Register here</span></p>
+        </div>
+        
+        <div class="form-container" id="registerForm">
+            <h2>Register</h2>
+            <input type="text" id="registerUsername" placeholder="Username">
+            <div class="password-container">
+                <input type="password" id="registerPassword" placeholder="Password">
+                <button type="button" class="toggle-password" onclick="togglePassword('registerPassword')">Show</button>
+            </div>
+            <button onclick="register()">Register</button>
+            <p>Already have an account? <span onclick="showLogin()">Login here</span></p>
+        </div>
+    </div>
+
+    <div class="home-container" id="homePage">
+        <!-- <h1>Welcome to the Home Page</h1> -->
+        <button id="logoutBtn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- <script src="scripts.js"></script> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showLogin();  // Display the login page initially
+        });
+        
+        function showLogin() {
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'flex';
+        }
+        
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'flex';
+        }
+        
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            // Add your login logic here
+            if (username && password) {
+                // Redirect to home page (for demonstration purposes)
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('homePage').style.display = 'flex';
+            } else {
+                alert('Please enter both username and password.');
+            }
+        }
+        
+        function register() {
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            // Add your registration logic here
+            alert('Registration successful for user: ' + username);
+            showLogin(); // Return to login page after registration
+        }
+        
+        function logout() {
+            // Logic to handle logout (e.g., clearing session data)
+            document.getElementById('homePage').style.display = 'none';
+            showLogin(); // Return to login page
+        }
+        
+        function togglePassword(id) {
+            const passwordInput = document.getElementById(id);
+            const button = passwordInput.nextElementSibling;
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+        
+    </script>
+</body>
+</html>

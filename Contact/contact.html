@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Recipe Finder</title>
+    <link rel="stylesheet" href="/Contact/contact.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+</head>
+
+<body>
+    <header>
+        <h1>Recipe Finder</h1>
+        <nav>
+            <ul>
+                <li><a href="/Home/home.html">Home</a></li>
+                <li><a href="/About/about.html">About</a></li>
+                <li><a href="/Contact/contact.html">Contact</a></li>
+                <li><a href="/login/login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <section id="contact-details" class="section-p1"> -->
+        <!--Contact section(details)  -->
+
+        <!-- <div class="details">
+            <span>GET IN TOUCH</span>
+            <h2>Visit one of our agency locations or contact us today</h2>
+            <h3>Head Office</h3>
+
+            <div>
+                <li>
+                    <i class="fal fa-map"></i>
+                    <p>Salt Lake,kolkata,West Bengal</p>
+                </li>
+
+                <li>
+                    <i class="far fa-envelope"></i>
+                    <p>contact@gmail.com</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <p> +91 896172</p>
+                </li>
+
+                <li>
+                    <i class="far fa-clock"></i>
+                    <p> 10:00am - 18:00pm, Mon - Sat</p>
+                </li>
+            </div>
+        </div> -->
+
+        <!-- MAP SECTION -->
+        <!-- <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.646789940929!2d88.40269727349101!3d22.592310132251082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027584d07a46db%3A0xa9a05eef4f428c1f!2sSalt%20Lake!5e0!3m2!1sen!2sin!4v1720934941374!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section> -->
+
+    <!-- Contact form -->
+    <section id="form-details">
+        <!--form -->
+        <form action="https://api.web3forms.com/submit" method="post">
+            <input type="hidden" name="access_key" value="e05f0856-1dd4-40ee-9e29-020b03fadce8">
+
+            <span>LEAVE A MESSAGE</span>
+            <h2>We love to hear from you</h2>
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="email" placeholder="E-mail" required>
+            <textarea name="yourmessage" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <button class="normal" onclick="submitForm()">Submit</button>
+        </form>
+
+        <!-- Member Details -->
+        <div class="people">
+            <div>
+                <img src="/img/chef/chef1.jpeg" alt="">
+                <p><span>Garima</span> Chef Owner <br> Phone: +91 896 172 <br> Email:
+                    contact@gmail.com</p>
+            </div>
+
+            <div>
+                <img src="/img/chef/chef2.jpeg" alt="">
+                <p><span>Ranveer</span> Inventory Management <br> Phone: +91 896 172 <br> Email:
+                    contact@gmail.com</p>
+            </div>
+
+            <div>
+                <img src="/img/chef/chef3.jpeg" alt="">
+                <p><span>Vikas</span> Train new kitchen staff <br> Phone: +91 896 172 <br> Email:
+                    contact@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-content">
+            <h3>Recipe Finder</h3>
+            <p>Your one-stop destination for all your cooking needs.</p>
+            <ul class="socials">
+                <li> <a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-facebook-f"></i></a> </li>
+                <li><a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-instagram"></i></a> </li>
+                <li> <a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-twitter"></i></a> </li>
+                <li><a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-youtube"></i></a> </li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Recipe Finder | Designed by Recipe Quest Team</p>
+        </div>
+    </footer>
+
+    <!-- contact form submit -->
+    <script>
+        function submitForm() {
+            let form = document.getElementById("form-details");
+            form.submit();
+        }
+    </script>
+</body>
+
+</html>

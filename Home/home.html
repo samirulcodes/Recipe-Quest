@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Finder</title>
     <link rel="stylesheet" href="/Home/home.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 
 <body>
@@ -13,66 +14,79 @@
         <h1>Recipe Finder</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/Home/home.html">Home</a></li>
+                <li><a href="/About/about.html">About</a></li>
+                <li><a href="/Contact/contact.html">Contact</a></li>
                 <li><a href="/login/login.html">Login/Register</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- hero page -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Recipe Finder</h1>
+                <p>Discover delicious recipes and share your culinary creations.</p>
+                <a href="#show"><button id="cta-button">Get Started</button></a>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- recipe list -->
     <section class="recipes-section">
-        <h2>Available Recipes</h2>
+        <h2 id="show">Available Recipes</h2>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
         </div>
         <div class="recipe-card">
-            <img src="/img/chicken-curry.jpeg" alt="chicken">
+            <img src="/img/recipe-list/chicken-curry.jpeg" alt="chicken">
             <h3>Recipe Name</h3>
             <button class="toggle-btn">Show Description</button>
             <p class="recipe-description">Description of the recipe.</p>
@@ -80,15 +94,45 @@
         <!-- More recipe cards can be added here -->
     </section>
 
+    <!-- search more recipe button -->
     <div class="btn">
         <a href="/index.html"><button class="btn1">Search More Recipe</button></a>
     </div>
+
+    <!-- footer -->
     <footer>
-        <p>&copy; 2024 Recipe Finder. All rights reserved.</p>
+        <div class="footer-content">
+            <h3>Recipe Finder</h3>
+            <p>Your one-stop destination for all your cooking needs.</p>
+            <ul class="socials">
+                <li> <a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-facebook-f"></i></a> </li>
+                <li><a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-instagram"></i></a> </li>
+                <li> <a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-twitter"></i></a> </li>
+                <li><a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
+                            class="fab fa-youtube"></i></a> </li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Recipe Finder | Designed by Recipe Quest Team</p>
+        </div>
     </footer>
 
 
+    <!-- hero page button -->
+    <!-- <script>
+        // scripts.js
 
+        document.getElementById('cta-button').addEventListener('click', function () {
+            window.location.href = 'recipes.html';
+        }); -->
+
+    </script>
+
+
+    <!-- show or hide description -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const buttons = document.querySelectorAll('.toggle-btn');

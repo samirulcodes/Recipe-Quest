@@ -5,6 +5,10 @@ body {
     background-color: #f8f8f8;
     background-image: url('https://www.foodwise.com.au/wp-content/uploads/2012/08/Background_ChoppingBoard21.jpg');
 }
+/* logo */
+#header img{
+    width: 50px;
+}
 
 header {
     background-color: #ff6347;
@@ -24,13 +28,19 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
 
-h2 {
+header nav ul li a:hover{
+    color: #d7c0bd;
+    transition: 0.5s;
+}
+
+#header h1 {
     font-size: 40px;
+    color: #d7c0bd;
 }
 
 /* hero page */

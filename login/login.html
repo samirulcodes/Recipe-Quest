@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="/login/login.css">
 </head>
 <body>
+    <div class="member">
+     
+ <h1>Members Login</h1> 
+    </div>
+
     <div class="container" id="loginPage">
         <div class="form-container" id="loginForm">
             <h2>Login</h2>
@@ -31,13 +36,18 @@
         </div>
     </div>
 
-    <div class="home-container" id="homePage">
-        <!-- <h1>Welcome to the Home Page</h1> -->
-        <button id="logoutBtn" onclick="logout()">Logout</button>
+    <div class="back-home">
+        <a href="/Home/home.html">Back to home</a>
     </div>
 
-    <!-- <script src="scripts.js"></script> -->
+    <!-- new page -->
+    <!-- <div class="home-container" id="homePage"> -->
+        <!-- <h1>Welcome to the Home Page</h1> -->
+        <!-- <button id="logoutBtn" onclick="logout()">Logout</button>
+    </div> -->
 
+   
+    <!-- login and register script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             showLogin();  // Display the login page initially
@@ -45,7 +55,7 @@
         
         function showLogin() {
             document.getElementById('loginPage').style.display = 'flex';
-            document.getElementById('homePage').style.display = 'none';
+           // document.getElementById('homePage').style.display = 'none';
             document.getElementById('registerForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'flex';
         }
@@ -62,7 +72,7 @@
             if (username && password) {
                 // Redirect to home page (for demonstration purposes)
                 document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('homePage').style.display = 'flex';
+               // document.getElementById('homePage').style.display = 'flex';
             } else {
                 alert('Please enter both username and password.');
             }
@@ -71,17 +81,18 @@
         function register() {
             const username = document.getElementById('registerUsername').value;
             const password = document.getElementById('registerPassword').value;
-            // Add your registration logic here
+            
             alert('Registration successful for user: ' + username);
             showLogin(); // Return to login page after registration
         }
         
-        function logout() {
+       //function logout() {
             // Logic to handle logout (e.g., clearing session data)
-            document.getElementById('homePage').style.display = 'none';
-            showLogin(); // Return to login page
-        }
+       //     document.getElementById('homePage').style.display = 'none';
+       //     showLogin(); // Return to login page
+       // }
         
+       //show password
         function togglePassword(id) {
             const passwordInput = document.getElementById(id);
             const button = passwordInput.nextElementSibling;

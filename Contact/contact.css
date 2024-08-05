@@ -4,8 +4,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    /* line-height: 1.6; */
 }
+
+#header img{
+  width: 50px;
+}
+
 
 /* navbar */
 header {
@@ -31,6 +36,15 @@ header nav ul li a {
     font-weight: bold;
 }
 
+header nav ul li a:hover{
+  color: #d7c0bd;
+  transition: 0.5s;
+}
+
+#header h1 {
+  font-size: 40px;
+  color: #d7c0bd;
+}
 
 main {
     padding: 20px;

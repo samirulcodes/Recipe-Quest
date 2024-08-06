@@ -1,8 +1,7 @@
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 /* logo */
@@ -43,36 +42,64 @@ header nav ul li a:hover{
     color: #d7c0bd;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
 }
 
-.review-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.rating-container {
+    margin-bottom: 2rem;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star.selected,
+.star:hover,
+.star:hover ~ .star {
+    color: gold;
+}
+
+textarea {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
+    height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.reviews {
     text-align: left;
 }
 
-.review-card h2 {
-    margin-top: 0;
+.review-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
 }
-
-.rating {
-    color: #ff6347;
-    margin: 10px 0;
-}
-
-.review-card p {
-    color: #333;
-}
-
 
 /* footer */
 footer {
@@ -80,50 +107,57 @@ footer {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-  }
-  
-  .footer-content {
+}
+
+.footer-content {
     max-width: 1000px;
     margin: auto;
-  }
-  
-  .footer-content h3 {
+}
+
+.footer-content h3 {
     margin-bottom: 10px;
     font-size: 1.8em;
-  }
-  
-  .footer-content p {
+}
+
+.footer-content p {
     margin-bottom: 20px;
     font-size: 1.2em;
-  }
-  
-  .footer-content .socials {
+}
+
+.footer-content .socials {
     list-style: none;
     padding: 0;
-  }
-  
-  .footer-content .socials li {
+}
+
+.footer-content .socials li {
     display: inline-block;
     margin: 0 10px;
-  }
-  
-  .footer-content .socials li a {
+}
+
+.footer-content .socials li a {
     text-decoration: none;
     color: #fff;
     font-size: 1.5em;
-  }
-  
-  .footer-bottom {
+}
+
+.footer-bottom {
     padding: 10px 0;
     background: #222;
-  }
-  
-  .footer-bottom p {
+}
+
+.footer-bottom p {
     margin: 0;
     font-size: 1em;
-  }
-  
-  .footer-bottom a {
+}
+
+.footer-bottom a {
     color: #fff;
     text-decoration: none;
-  }
+}
+
+@media (max-width: 600px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

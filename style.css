@@ -12,6 +12,7 @@ body {
     background-color: var(--primary-clr);
     padding: 3rem 0;
 }
+
 :root {
     --primary-clr: #161616;
     --primary-rgba-7: rgba(0, 0, 0, .4);

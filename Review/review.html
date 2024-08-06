@@ -1,79 +1,56 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Reviews - Recipe Finder</title>
+    <title>Rating Page</title>
     <link rel="stylesheet" href="/Review/review.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>
-    
-    <header id="header">
-        <h1>Recipe Quest</h1>
-        <img src="/img/logo.png" alt="">
-        <nav>
-            <ul>
-                <li><a href="/Home/home.html">Home</a></li>
-                <li><a href="/About/about.html">About</a></li>
-                <li><a href="/Contact/contact.html">Contact</a></li>
-                <li><a href="/Review/review.html">Review</a></li>
-                <li><a href="/login/login.html">Login/Register</a></li>
-               
-            </ul>
-        </nav>
-    </header>
+   <!-- navbar -->
+   <header id="header">
+    <h1>Recipe Quest</h1>
+    <img src="/img/logo.png" alt="">
+    <nav>
+        <ul>
+            <li><a href="/Home/home.html">Home</a></li>
+            <li><a href="/About/about.html">About</a></li>
+            <li><a href="/Contact/contact.html">Contact</a></li>
+            <li><a href="/Review/review.html">Review</a></li>
+            <li><a href="/index.html">Recipes</a></li>
+            <li><a href="/login/login.html">Login/Register</a></li>
+            
+        </ul>
+    </nav>
+</header>
 
 
-    <main>
-        <div class="review-card">
-            <h2>Sneha</h2>
-            <div class="rating">
-                ★★★★★
+    <div class="container">
+        <h1>Rate and Review</h1>
+        <div class="rating-container">
+            <div class="stars">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
             </div>
-            <p>"The chocolate cake recipe was amazing! My family loved it."</p>
+            <textarea id="review" placeholder="Write your review here..."></textarea>
+            <button id="submit">Submit</button>
         </div>
-        <div class="review-card">
-            <h2>Saif</h2>
-            <div class="rating">
-                ★★★☆☆
-            </div>
-            <p>"Great recipes overall, but the pasta recipe could use more seasoning."</p>
+        <div class="reviews">
+            <h2>Reviews</h2>
+            <div id="reviews-list"></div>
         </div>
-        <div class="review-card">
-            <h2>Aman</h2>
-            <div class="rating">
-                 ★★★★★
-            </div>
-            <p>"Loved the easy-to-follow instructions. The chicken curry turned out perfect!"</p>
-        </div>
-        <div class="review-card">
-            <h2>Saumya</h2>
-            <div class="rating">
-                 ★★★★★
-            </div>
-            <p>"I've tried many carbonara recipes, but this one is the best. The sauce is creamy and flavorful. Highly recommend and instruction is just aswsome"</p>
-        </div>
-        <div class="review-card">
-            <h2>Sanjeev</h2>
-            <div class="rating">
-                ★★★☆☆
-            </div>
-            <p>"The pizza was good, but it could use more seasoning. The crust was nice and crispy though."</p>
-        </div>
-        <div class="review-card">
-            <h2>Navin</h2>
-            <div class="rating">
-                 ★★★★★
-            </div>
-            <p>"Loved the easy-to-follow instructions. The chicken curry turned out perfect!"</p>
-        </div>
-    </main>
+    </div>
 
-    <!-- footer -->
-    <footer>
+     <!-- footer -->
+     <footer>
         <div class="footer-content">
-            <h3>Recipe Finder</h3>
+            <h3>Recipe Quest</h3>
             <p>Your one-stop destination for all your cooking needs.</p>
             <ul class="socials">
                 <li> <a href="https://www.instagram.com/aman.js.07?igsh=ZTE2czh4emxxMHMz"><i
@@ -87,8 +64,80 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Recipe Finder | Designed by Recipe Quest Team</p>
+            <p>&copy; 2024 Recipe Quest | Designed by Recipe Quest Team</p>
         </div>
     </footer>
+
+    <script src="/Review/review.js"></script>
+
+
+    <script>
+        
+
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.star');
+    const reviewInput = document.getElementById('review');
+    const submitButton = document.getElementById('submit');
+    const reviewsList = document.getElementById('reviews-list');
+    let selectedRating = 0;
+
+    // Load reviews from localStorage
+    loadReviews();
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = star.getAttribute('data-value');
+            stars.forEach(s => s.classList.remove('selected'));
+            star.classList.add('selected');
+        });
+
+        star.addEventListener('mouseover', () => {
+            stars.forEach(s => s.classList.remove('hovered'));
+            star.classList.add('hovered');
+            star.previousElementSibling && star.previousElementSibling.classList.add('hovered');
+        });
+
+        star.addEventListener('mouseout', () => {
+            stars.forEach(s => s.classList.remove('hovered'));
+        });
+    });
+
+    submitButton.addEventListener('click', () => {
+        const reviewText = reviewInput.value.trim();
+        if (selectedRating && reviewText) {
+            const review = { rating: selectedRating, text: reviewText };
+            saveReview(review);
+            addReviewToDOM(review);
+            reviewInput.value = '';
+            stars.forEach(s => s.classList.remove('selected'));
+            selectedRating = 0;
+        } else {
+            alert('Please provide a rating and a review.');
+        }
+    });
+
+    function saveReview(review) {
+        let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+        reviews.push(review);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+    }
+
+    function loadReviews() {
+        let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+        reviews.forEach(review => addReviewToDOM(review));
+    }
+
+    function addReviewToDOM(review) {
+        const reviewItem = document.createElement('div');
+        reviewItem.classList.add('review-item');
+        reviewItem.innerHTML = `
+            <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+            <p>${review.text}</p>
+        `;
+        reviewsList.appendChild(reviewItem);
+    }
+});
+
+    </script>
 </body>
 </html>

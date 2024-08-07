@@ -3,108 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Register</title>
+    <title>Login and Register</title>
     <link rel="stylesheet" href="/login/login.css">
 </head>
 <body>
-    <div class="member">
-     
- <h1>Members Login</h1> 
-    </div>
-
-    <div class="container" id="loginPage">
-        <div class="form-container" id="loginForm">
+    <div class="container">
+        <div id="login-form" class="form-container">
             <h2>Login</h2>
-            <input type="text" id="loginUsername" placeholder="Username">
-            <div class="password-container">
-                <input type="password" id="loginPassword" placeholder="Password">
-                <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')">Show</button>
-            </div>
-            <button onclick="login()">Login</button>
-            <p>Don't have an account? <span onclick="showRegister()">Register here</span></p>
+            <form>
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+                <button type="button" id="login-show-password">Show Password</button>
+                <button type="button" onclick="login()">Login</button>
+                <p>Don't have an account? <a href="#" onclick="showRegisterForm()">Register here</a></p>
+            </form>
         </div>
-        
-        <div class="form-container" id="registerForm">
+        <div id="register-form" class="form-container">
             <h2>Register</h2>
-            <input type="text" id="registerUsername" placeholder="Username">
-            <div class="password-container">
-                <input type="password" id="registerPassword" placeholder="Password">
-                <button type="button" class="toggle-password" onclick="togglePassword('registerPassword')">Show</button>
-            </div>
-            <button onclick="register()">Register</button>
-            <p>Already have an account? <span onclick="showLogin()">Login here</span></p>
+            <form>
+                <label for="register-username">Username:</label>
+                <input type="text" id="register-username" required>
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" required>
+                <button type="button" id="register-show-password">Show Password</button>
+                <button type="button" onclick="register()">Register</button>
+                <p>Already have an account? <a href="#" onclick="showLoginForm()">Login here</a></p>
+            </form>
         </div>
     </div>
+    
+    
+    <script src="scripts.js"></script>
 
-    <div class="back-home">
-        <a href="/Home/home.html">Back to home</a>
-    </div>
-
-    <!-- new page -->
-    <!-- <div class="home-container" id="homePage"> -->
-        <!-- <h1>Welcome to the Home Page</h1> -->
-        <!-- <button id="logoutBtn" onclick="logout()">Logout</button>
-    </div> -->
-
-   
-    <!-- login and register script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            showLogin();  // Display the login page initially
+        document.addEventListener('DOMContentLoaded', () => {
+            showLoginForm();
+            document.getElementById('login-show-password').addEventListener('click', () => togglePassword('login-password'));
+            document.getElementById('register-show-password').addEventListener('click', () => togglePassword('register-password'));
         });
         
-        function showLogin() {
-            document.getElementById('loginPage').style.display = 'flex';
-           // document.getElementById('homePage').style.display = 'none';
-            document.getElementById('registerForm').style.display = 'none';
-            document.getElementById('loginForm').style.display = 'flex';
+        function showLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
         }
         
-        function showRegister() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('registerForm').style.display = 'flex';
+        function showRegisterForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+        
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+            } else {
+                input.type = 'password';
+            }
         }
         
         function login() {
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            // Add your login logic here
-            if (username && password) {
-                // Redirect to home page (for demonstration purposes)
-                document.getElementById('loginPage').style.display = 'none';
-               // document.getElementById('homePage').style.display = 'flex';
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+        
+            const storedUser = JSON.parse(localStorage.getItem(username));
+            
+            if (storedUser && storedUser.password === password) {
+                alert('Login successful!');
+                // Redirect to the home page
+                window.location.href = '/Home/home.html';
             } else {
-                alert('Please enter both username and password.');
+                alert('Invalid username or password.');
             }
         }
         
         function register() {
-            const username = document.getElementById('registerUsername').value;
-            const password = document.getElementById('registerPassword').value;
-            
-            alert('Registration successful for user: ' + username);
-            showLogin(); // Return to login page after registration
-        }
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
         
-       //function logout() {
-            // Logic to handle logout (e.g., clearing session data)
-       //     document.getElementById('homePage').style.display = 'none';
-       //     showLogin(); // Return to login page
-       // }
-        
-       //show password
-        function togglePassword(id) {
-            const passwordInput = document.getElementById(id);
-            const button = passwordInput.nextElementSibling;
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                button.textContent = 'Hide';
+            if (localStorage.getItem(username)) {
+                alert('Username already exists.');
             } else {
-                passwordInput.type = 'password';
-                button.textContent = 'Show';
+                const user = { username, password };
+                localStorage.setItem(username, JSON.stringify(user));
+                alert('Registration successful!');
+                showLoginForm();
             }
         }
         
     </script>
+
 </body>
 </html>

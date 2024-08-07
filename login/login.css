@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,116 +9,65 @@ body {
     background-image: url('/img/login-bgc.jpg');
 }
 
-.member{
-    position: absolute;
-    top: 80px;
-}
-
-.container,
-.home-container {
-    background-color: #efefef;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.container {
+    background-color: #fff;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    background: transparent;
-   
 }
 
 .form-container {
-    
     display: none;
+}
+
+form {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-.form-container input{
-    background: transparent;
-    
 }
 
-.form-container h2 {
-    margin: 0;
+label {
+    margin-bottom: 5px;
 }
 
-.form-container input {
-    padding: 10px;
-    width: calc(100% - 22px);
+input {
+    margin-bottom: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.password-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.toggle-password {
-    background-color: #ddd;
-    border: none;
+button {
     padding: 10px;
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.form-container button {
-    background-color: #4CAF50;
-    color: white;
     border: none;
-    padding: 10px;
-    cursor: pointer;
     border-radius: 5px;
-}
-
-.form-container p {
-    margin: 0;
-}
-
-.form-container span {
-    color: blue;
+    background-color: #28a745;
+    color: #fff;
     cursor: pointer;
 }
 
-.home-container {
-    display: none;
-    text-align: center;
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+#login-show-password{
+    margin-bottom: 5px;
 }
 
-/* #logoutBtn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-} */
-
-/* back to home */
-
-.back-home {
-    position: absolute;
-    bottom: 50px;
-
+#register-show-password{
+    margin-bottom: 5px;
 }
 
-.back-home a {
+p {
+    margin-top: 10px;
+}
+
+a {
+    color: #007bff;
     text-decoration: none;
-    color: #0e41e6;
-    font-size: 20px;
+    cursor: pointer;
 }
 
-.back-home a:hover {
-    color: #000;
-    transition: 0.3s;
-
+a:hover {
+    text-decoration: underline;
 }
-
-
-
-
-

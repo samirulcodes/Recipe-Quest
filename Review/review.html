@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +8,31 @@
     <link rel="stylesheet" href="/Review/review.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
-<body>
-   <!-- navbar -->
-   <header id="header">
-    <h1>Recipe Quest</h1>
-    <img src="/img/logo.png" alt="">
-    <nav>
-        <ul>
-            <li><a href="/Home/home.html">Home</a></li>
-            <li><a href="/About/about.html">About</a></li>
-            <li><a href="/Contact/contact.html">Contact</a></li>
-            <li><a href="/Review/review.html">Review</a></li>
-            <li><a href="/index.html">Recipes</a></li>
-            <li><a href="/login/login.html">Login/Register</a></li>
-            
-        </ul>
-    </nav>
-</header>
 
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="container1">
+            <div class="logo">
+                <img src="/img/logo.png" alt="Logo">
+            </div>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="/Home/home.html">Home</a></li>
+                    <li><a href="/About/about.html">About</a></li>
+                    <li><a href="/Contact/contact.html">Contact</a></li>
+                    <li><a href="/Review/review.html">Review</a></li>
+                    <li><a href="/index.html">Recipes</a></li>
+                    <li><a href="/login/login.html">Login/Register</a></li>
+                </ul>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
         <h1>Rate and Review</h1>
@@ -47,8 +53,8 @@
         </div>
     </div>
 
-     <!-- footer -->
-     <footer>
+    <!-- footer -->
+    <footer>
         <div class="footer-content">
             <h3>Recipe Quest</h3>
             <p>Your one-stop destination for all your cooking needs.</p>
@@ -68,76 +74,87 @@
         </div>
     </footer>
 
-    <script src="/Review/review.js"></script>
+   
+    <!-- script for navbar hamburger menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('mobile');
+            });
+        });
+
+    </script>
 
 
     <script>
-        
+        document.addEventListener('DOMContentLoaded', () => {
+            const stars = document.querySelectorAll('.star');
+            const reviewInput = document.getElementById('review');
+            const submitButton = document.getElementById('submit');
+            const reviewsList = document.getElementById('reviews-list');
+            let selectedRating = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const stars = document.querySelectorAll('.star');
-    const reviewInput = document.getElementById('review');
-    const submitButton = document.getElementById('submit');
-    const reviewsList = document.getElementById('reviews-list');
-    let selectedRating = 0;
+            // Load reviews from localStorage
+            loadReviews();
 
-    // Load reviews from localStorage
-    loadReviews();
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    selectedRating = star.getAttribute('data-value');
+                    stars.forEach(s => s.classList.remove('selected'));
+                    star.classList.add('selected');
+                });
 
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            selectedRating = star.getAttribute('data-value');
-            stars.forEach(s => s.classList.remove('selected'));
-            star.classList.add('selected');
-        });
+                star.addEventListener('mouseover', () => {
+                    stars.forEach(s => s.classList.remove('hovered'));
+                    star.classList.add('hovered');
+                    star.previousElementSibling && star.previousElementSibling.classList.add('hovered');
+                });
 
-        star.addEventListener('mouseover', () => {
-            stars.forEach(s => s.classList.remove('hovered'));
-            star.classList.add('hovered');
-            star.previousElementSibling && star.previousElementSibling.classList.add('hovered');
-        });
+                star.addEventListener('mouseout', () => {
+                    stars.forEach(s => s.classList.remove('hovered'));
+                });
+            });
 
-        star.addEventListener('mouseout', () => {
-            stars.forEach(s => s.classList.remove('hovered'));
-        });
-    });
+            submitButton.addEventListener('click', () => {
+                const reviewText = reviewInput.value.trim();
+                if (selectedRating && reviewText) {
+                    const review = { rating: selectedRating, text: reviewText };
+                    saveReview(review);
+                    addReviewToDOM(review);
+                    reviewInput.value = '';
+                    stars.forEach(s => s.classList.remove('selected'));
+                    selectedRating = 0;
+                } else {
+                    alert('Please provide a rating and a review.');
+                }
+            });
 
-    submitButton.addEventListener('click', () => {
-        const reviewText = reviewInput.value.trim();
-        if (selectedRating && reviewText) {
-            const review = { rating: selectedRating, text: reviewText };
-            saveReview(review);
-            addReviewToDOM(review);
-            reviewInput.value = '';
-            stars.forEach(s => s.classList.remove('selected'));
-            selectedRating = 0;
-        } else {
-            alert('Please provide a rating and a review.');
-        }
-    });
+            function saveReview(review) {
+                let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                reviews.push(review);
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+            }
 
-    function saveReview(review) {
-        let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-        reviews.push(review);
-        localStorage.setItem('reviews', JSON.stringify(reviews));
-    }
+            function loadReviews() {
+                let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                reviews.forEach(review => addReviewToDOM(review));
+            }
 
-    function loadReviews() {
-        let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-        reviews.forEach(review => addReviewToDOM(review));
-    }
-
-    function addReviewToDOM(review) {
-        const reviewItem = document.createElement('div');
-        reviewItem.classList.add('review-item');
-        reviewItem.innerHTML = `
+            function addReviewToDOM(review) {
+                const reviewItem = document.createElement('div');
+                reviewItem.classList.add('review-item');
+                reviewItem.innerHTML = `
             <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
             <p>${review.text}</p>
         `;
-        reviewsList.appendChild(reviewItem);
-    }
-});
+                reviewsList.appendChild(reviewItem);
+            }
+        });
 
     </script>
 </body>
+
 </html>

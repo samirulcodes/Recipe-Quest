@@ -274,3 +274,103 @@ footer {
   color: #fff;
   text-decoration: none;
 }
+
+
+
+/* Adjustments for medium screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links.mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ff5f48;
+  }
+
+  .nav-links.mobile ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .nav-links.mobile ul li {
+    text-align: center;
+  }
+}
+
+/* Adjustments for small screens like Google Pixel 7 */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between; /* Ensures logo and hamburger are on opposite sides */
+    align-items: center;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  .hamburger span {
+    width: 20px;
+  }
+
+  .nav-links.mobile ul li {
+    padding: 10px 0;
+  }
+
+  main {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  /* Contact page responsiveness */
+  #form-details {
+    flex-direction: column;
+    margin: 20px;
+    padding: 40px;
+  }
+
+  #form-details form {
+    width: 100%;
+  }
+
+  #form-details .people div {
+    padding-bottom: 15px;
+  }
+
+  #form-details .people div img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Footer responsiveness */
+  footer {
+    padding: 15px 0;
+  }
+
+  .footer-content {
+    padding: 0 20px;
+  }
+
+  .footer-content h3 {
+    font-size: 1.5em;
+  }
+
+  .footer-content p {
+    font-size: 1em;
+  }
+
+  .footer-content .socials li a {
+    font-size: 1.2em;
+  }
+}

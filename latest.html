@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greek Kofta Kebabs Recipe</title>
+    <link rel="stylesheet" href="latest.css">
+</head>
+<body>
+    <div class="container">
+        <div class="recipe-image">
+            <img src="" alt="Greek Kofta Kebabs">
+        </div>
+        <div class="recipe-content">
+            <h2>Greek Kofta Kebabs</h2>
+            <p>This is a Greek lamb kofta kebab made using a special spice blend recipe given to me by the owner of Kalimera Souviako Art, a very popular Greek gyros shop in Melbourne, Australia. It's simple, but unique and really, really good.</p>
+            <button id="get-recipe-btn">Get the Recipe</button>
+            <div id="recipe-details" style="display: none;">
+                </div>
+        </div>
+    </div>
+    
+
+    <script>
+        const getRecipeBtn = document.getElementById('get-recipe-btn');
+const recipeDetails = document.getElementById('recipe-details');
+
+getRecipeBtn.addEventListener('click', () => {
+    // Replace this with your actual recipe data
+    const recipeData = {
+        ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
+        instructions: ['Step 1', 'Step 2', 'Step 3']
+    };
+
+    // Create HTML elements for the recipe content
+    const ingredientsList = document.createElement('ul');
+    recipeData.ingredients.forEach(ingredient => {
+        const listItem = document.createElement('li');
+        listItem.textContent = ingredient;
+        ingredientsList.appendChild(listItem);
+    });
+
+    const instructionsList = document.createElement('ol');
+    recipeData.instructions.forEach(instruction => {
+        const listItem = document.createElement('li');
+        listItem.textContent = instruction;
+        instructionsList.appendChild(listItem);
+    });
+
+    // Append the recipe content to the recipe details container
+    recipeDetails.innerHTML = ''; // Clear any previous content
+    recipeDetails.appendChild(ingredientsList);
+    recipeDetails.appendChild(instructionsList);
+
+    // Show the recipe details
+    recipeDetails.style.display = 'block';
+});
+
+    </script>
+</body>
+</html>

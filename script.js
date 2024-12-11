@@ -204,3 +204,39 @@ lightDarkModeSpan.addEventListener('click', () => {
 
     document.documentElement.classList.toggle('light-theme');
 })
+
+
+// EXPLANATION
+
+// How does the app fetch a random meal?
+// Answer: The app uses the getRandomMeal function, which sends a GET request to the TheMealDB API endpoint (/random.php) using the fetch API. It then processes the response as JSON and displays the meal by calling addMeal(random_meal).
+
+// What is the purpose of getMealsBySearch and how does it work?
+// Answer: getMealsBySearch fetches meals that match a search term by sending a GET request to the API endpoint /search.php?s=term. It processes the response as JSON and returns the array of meals to the caller.
+
+// How is local storage used in this app?
+// Answer: Local storage is used to store the IDs of favorite meals.
+// addMealLS adds a meal ID to local storage.
+// removeMealLS removes a meal ID.
+// getMealLS retrieves all saved meal IDs.
+
+// How does the app ensure synchronization between the UI and local storage for favorite meals?
+// Answer: When a meal is added or removed as a favorite (addMealLS or removeMealLS), the fetchFavMeals function is called to refresh the UI with the updated list of favorite meals. Additionally, heart icons are toggled to reflect the current favorite state.
+
+// How are meal details displayed in a popup?
+// Answer: The showMealPopup function dynamically creates a detailed view of the meal using its ingredients, instructions, and an image. This is appended to the popup container, which is then made visible by setting its display style to flex.
+
+// How is dark/light mode toggled in the application?
+// Answer: The lightDarkModeSpan click event toggles a light-theme class on the document.documentElement element and switches the icon between a sun and a moon to visually represent the mode.
+
+// How does the app handle click events for heart icons in meal cards?
+// Answer: A click event listener on the heart icon toggles the icon's class between fa-regular and fa-solid, indicating whether the meal is favorited. It then updates local storage (addMealLS or removeMealLS) and refreshes the favorite meals UI (fetchFavMeals).
+
+// How are meal ingredients and measures handled in the popup?
+// Answer: Ingredients and measures are dynamically extracted using a loop over keys (strIngredient1, strMeasure1, etc.). Non-empty values are pushed to the ingredients array and displayed in a list within the popup.
+
+// What happens if the search returns no results?
+// Answer: If no meals are returned from getMealsBySearch, the app updates the header to "No Meals Found" and clears any previous results from the meal container.
+
+// How does the app ensure the heart icons in the main UI are in sync with favorite meals in local storage?
+// Answer: After removing a meal from favorites, the app iterates over all heart icons and resets them to fa-regular. This ensures the icons visually reflect the current state.
